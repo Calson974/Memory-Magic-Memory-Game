@@ -1,0 +1,206 @@
+:root {
+    background: linear-gradient(135deg, #2bcf0b, #a1f75b);
+    background: linear-gradient(135deg, #3299df, #c3eca1);
+
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'bubblegum Sans', cursive;
+    overflow: hidden;
+    position: relative;
+}
+/* ======= FLOATING BACKGROUND SYMBOLS ======= */
+.floating-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+.floating-symbol {
+    position: absolute;
+    font-size: 40px;
+    opacity: 0.6;
+    animation: floatUp 8s linear infinite;
+}
+@keyframes floatUp {
+    0%{
+        transform: translateY(100vh); opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh); opacity: 0;
+    }
+}
+.game-title {
+    font-size: 50px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px 0;
+}
+.game-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 3px solid #2bcf0b;
+    position: relative;
+    animation: containerGlow 2s infinite alternate;
+}
+@keyframes containerGlow {
+    from {
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+    }
+}
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+.card {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.card-front {
+    background-color: #f0f0f0;
+    transform: rotateY(180deg);
+    font-size: 40px;
+}
+
+.card-back {
+    background-color: #3299df;
+    color: white;
+    font-size: 24px;
+}
+
+.card.matched {
+    animation: matched 0.6s ease-out;
+}
+
+@keyframes matched {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#score-panel {
+    margin: 20px;
+    padding: 15px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    font-size: 24px;
+    color: #3299df;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* ========  MOBILE SETTINGS  ======== */
+@media(max-width: 1048px) {
+    .game-container {
+        padding: 20px;
+        width: 270px;
+    }
+    .game-board {
+        grid-template-columns: repeat(4,1fr);
+        gap: 8px;
+    }
+    .card {
+        width: 60px;
+        height: 60px;
+    }
+    .card-front, .card-back {
+        font-size: 24px;
+    }
+}
+@media(max-width: 768px) {
+    .game-container {
+        padding: 20px;
+        width: 270px;
+    }
+    .game-board {
+        grid-template-columns: repeat(4,1fr);
+        gap: 8px;
+    }
+    .card {
+        width: 60px;
+        height: 60px;
+    }
+    .card-front, .card-back {
+        font-size: 24px;
+    }
+}
+.dev {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 12px;;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.dev a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.dev a:hover {
+    color: #2bcf0b;
+}
+.dev a:visited {
+    color: #fff;
+}
+.dev a:active {
+    color: #2bcf0b;
+}
+.dev a:focus {
+    outline: none;
+}
+.dev a:focus-visible {
+    outline: 2px solid #2bcf0b;
+    outline-offset: 2px;
+}
