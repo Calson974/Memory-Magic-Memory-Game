@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 $(document).ready(function(){
 
     const symbols = ['👾', '🐱‍🏍', '🐱‍👓', '👽', '👻', '🤖', '🐱‍👤', '🐱‍🚀'];
