@@ -1,6 +1,7 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
+// File: js/script.js
+// Description: This script implements a simple memory card game where players flip cards to find matching pairs.
+// The game includes a floating background with random symbols and a scoring system.
 $(document).ready(function(){
-
     const symbols = ['👾', '🐱‍🏍', '🐱‍👓', '👽', '👻', '🤖', '🐱‍👤', '🐱‍🚀'];
     const gameboard = $('.game-board');
     let flippedCards = [];
